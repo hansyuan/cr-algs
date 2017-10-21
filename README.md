@@ -6,3 +6,18 @@ it will take to travel.
 (1) database exists. Implement this first.
 
 (2) query Google Maps API. Approximately Sunday.
+
+
+Related to the study:
+
+
+read.py
+- contains functions to read the data
+
+
+util.py
+- contains functions to play around with the data
+
+
+study.py
+- contains high level tasks, like sifting through times
