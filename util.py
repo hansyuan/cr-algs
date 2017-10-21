@@ -1,5 +1,13 @@
 # This file contains utilities to work with the data.
 
+from math import sin, cos, sqrt, atan2, radians
+import geopy.distance
+
+
+def dist(first: tuple, second: tuple) -> (float, str):
+    """ Given two GPS coords, returns float dist in kilometers"""
+    return geopy.distance.vincenty(first, second).km
+
 
 def diff_dist(data, base_index, demand_index):
     """Calculates the Euclidean GPS distance difference. Based on raw given data. """
@@ -15,3 +23,4 @@ def diff_time(data, base_index, demand_index):
     (calls, bases, demands, times) = data
     diff = times[base_index][demand_index] / 60.0
     return diff
+
