@@ -8,7 +8,7 @@ def coords_as_set():
 
 def scatter_plot(show=False, print_stuff=False):
     coords = dict()
-    data = opendata()
+    data = opendata("input/calls.csv")
     x = []
     y = []
     for d in data:

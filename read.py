@@ -68,7 +68,7 @@ def populate_data():
 
     # Translate strings into ints or floats
 
-    return
+    return ((calls,bases,demands,times))
 
 if __name__ == "__main__":
     populate_data()
