@@ -21,3 +21,10 @@ util.py
 
 study.py
 - contains high level tasks, like sifting through times
+
+
+
+Determine closeness
+- Map by longitude, then lattitude. Determine a delta for both. 
+Then find something about the travel times to the point, and 
+the surrounding deltas.

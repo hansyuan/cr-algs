@@ -44,12 +44,10 @@ def populate_data():
     global calls, bases, demands, times
 
     # Raw Data
-
     bases_d = openfile_as_listoflist(filename=bases)
     calls_d = openfile_as_listoflist(filename=calls)
     demands_d = openfile_as_listoflist(filename=demands)
     times_d = openfile_as_listoflist(filename=times)
-
 
     # Pick data wanted
     bases = []
@@ -68,7 +66,7 @@ def populate_data():
 
     # Translate strings into ints or floats
 
-    return ((calls,bases,demands,times))
+    return (calls,bases,demands,times)
 
 if __name__ == "__main__":
     populate_data()
