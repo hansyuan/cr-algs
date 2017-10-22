@@ -15,13 +15,11 @@ it will take to travel.
 - query Google Maps API. Approximately Sunday.
 
 
-Related to the study:
+Python files:
 
 read.py contains functions to read the data
 
-
 util.py contains functions to play around with the data
-
 
 study.py contains high level tasks, like sifting through times
 
