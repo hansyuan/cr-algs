@@ -52,7 +52,7 @@ def populate_data():
     # Pick data wanted
     bases = []
     for each_base in bases_d:
-        bases += [each_base[4:6]]
+        bases += tuple([each_base[4:6]])
 
     calls = calls_d
     demands = demands_d

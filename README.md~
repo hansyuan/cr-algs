@@ -1,10 +1,5 @@
 Immediate step up from previous work
 
-## Findings so far
-- Demand points are not very close to each other. Estimations for 
-points that are in between demand points within the database are
-are not likely confident. 
-
 ## Progress
 - Given a set of points, a central point (x, y), and a delta d, find
 all the points within (x and x+d, y and y+d)
