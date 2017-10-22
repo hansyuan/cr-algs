@@ -6,7 +6,7 @@ all the points within (x and x+d, y and y+d)
 
 
 
-##Goal
+## Goal
 
 Given base A and demand B, quickly estimate amount of time
 it will take to travel.
