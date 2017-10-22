@@ -5,6 +5,7 @@ Immediate step up from previous work
 all the points within (x and x+d, y and y+d)
 
 
+
 ##Goal
 
 Given base A and demand B, quickly estimate amount of time
