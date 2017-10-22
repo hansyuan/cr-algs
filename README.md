@@ -1,4 +1,5 @@
-Immediate step up from previous work
+## Question
+- What time and day are the data estimates based on? I thought it was clustered by time and type of day. 
 
 ## Findings so far
 - Demand points are not very close to each other. Estimations for 
