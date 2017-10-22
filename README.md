@@ -11,28 +11,22 @@ all the points within (x and x+d, y and y+d)
 Given base A and demand B, quickly estimate amount of time
 it will take to travel.
 
-(1) database exists. Implement this first.
-
-(2) query Google Maps API. Approximately Sunday.
+- database exists. Implement this first.
+- query Google Maps API. Approximately Sunday.
 
 
 Related to the study:
 
-
-read.py
-- contains functions to read the data
+read.py contains functions to read the data
 
 
-util.py
-- contains functions to play around with the data
+util.py contains functions to play around with the data
 
 
-study.py
-- contains high level tasks, like sifting through times
+study.py contains high level tasks, like sifting through times
 
+## Determine closeness
 
-
-Determine closeness
 - Map by longitude, then lattitude. Determine a delta for both. 
 Then find something about the travel times to the point, and 
 the surrounding deltas.
