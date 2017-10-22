@@ -2,11 +2,46 @@
 
 from math import sin, cos, sqrt, atan2, radians
 import geopy.distance
+import copy
 
+debug=True
 
 def dist(first: tuple, second: tuple) -> (float, str):
     """ Given two GPS coords, returns float dist in kilometers"""
     return geopy.distance.vincenty(first, second).km
+
+def reorder(input:list, position: int):
+    """ Given a tuple and the position, reorder the list of tuple
+    in numerical order based on the parameter. """
+
+    if debug: print("reordering ")
+
+    tuples = []
+    for each in input:
+        t = copy.deepcopy(each)
+        tuples.append(t)
+
+    return_list = []
+
+    # Find the lowest specific parameter value
+    for i in tuples:
+        min_val = tuples[0][position]
+        min_pos = 0
+
+        for index in range(len(tuples)):
+            # find the next highest value
+            if tuples[index][position] < min_val: # find the lowest item
+                min_val = tuples[index][position]
+                min_pos = index
+            t = copy.deepcopy(tuples[min_pos])
+            #print(t)
+        return_list.append(t)
+            #print (return_list)
+        for each in range(len(tuples[min_pos])): # erase from iterating
+            tuples[min_pos] = (99,99)
+
+    return return_list
+
 
 
 def diff_dist(data, base_index, demand_index):

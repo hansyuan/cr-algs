@@ -3,6 +3,8 @@ import read
 import util
 import copy
 
+
+debug = True
 """
     bases = set of (x1,y1) of all the bases
     demands = set of (x2,y2) of all the bases
@@ -15,55 +17,70 @@ def print_lines(items: list) -> None:
         print(i)
 
 
-def reorder(input:list, position: int):
-    """ Given a tuple and the position, reorder the list of tuple
-    in numerical order based on the parameter. """
+def surrounding_points(point: tuple, delta: float, data: list, reordered_data: list) -> [[]]:
+    """ Given a point, a delta, and the set of points to work with, return
+    a list of tuples containing all surrounding points.
+    This should work for both bases and demands. """
+    (x,y) = point
+    # print (point)
 
-    tuples = []
-    for each in input:
-        t = copy.deepcopy(tuple(each))
-        tuples.append(t)
+    # let's find the surrounding x coordinates
+    if reordered_data:
+        x_ordered = reordered_data
+    else:
+        x_ordered = util.reorder(data, 0)
 
-    return_list = []
+    for i in range(len(x_ordered)):
+        if x_ordered[i][0] == x:
+            index_of_center = i
+            break;
 
-    # Find the lowest specific parameter value
-    for i in tuples:
-        min_val = tuples[0][position]
-        min_pos = 0
+    # Go forwards and backwards. For each point, calculate the distance.
+    # If the distance exceeds the delta, then stop
+    curr_x = index_of_center + 1
+    all_the_surrounding_points = []
+    while True:
 
-        for index in range(len(tuples)):
-            # find the next highest value
-            if tuples[index][position] < min_val: # find the lowest item
-                min_val = tuples[index][position]
-                min_pos = index
-            t = copy.deepcopy(tuples[min_pos])
-            #print(t)
-        return_list.append(t)
-            #print (return_list)
-        for each in range(len(tuples[min_pos])): # erase from iterating
-            tuples[min_pos] = (99,99)
+        # Check that only the x diff > delta in x
+        if curr_x < 0 or curr_x >= len(x_ordered):
+            break
+        if util.dist(x_ordered[i], (x_ordered[curr_x][0], x_ordered[i][1])) > delta:
+            break
 
-    return return_list
+        distance = util.dist(x_ordered[i], x_ordered[curr_x])
+        if distance < delta:
+            print("Found: ", x_ordered[i], x_ordered[curr_x], "\tDistance:\t", distance)
+            all_the_surrounding_points.append(x_ordered[curr_x])
+        curr_x += 1
+    return all_the_surrounding_points
 
 
 if __name__ == "__main__":
 
     data = (calls, bases, demands, times) = read.populate_data()
 
-    p = util.borrow2(bases[0], bases[1])
-    print(bases[0], bases[1])
-    print(p)
+    # re_x = util.reorder(bases, 0)
+    # for x in range(len(bases)):
+    #     surrounding = surrounding_points(bases[x], 0.2, bases, reordered_data=re_x)
+    #     if surrounding:
+    #         print("Result of search with the delta: " , surrounding)
 
+    re_x = util.reorder(demands, 0)
+    for x in range(len(demands)):
+        surrounding = surrounding_points(demands[x], 2, demands, reordered_data=re_x)
+        if surrounding:
+            print("Result of search with the delta: ", surrounding)
+    exit()
 
     print("Reorder x")
-    reordered_bases_x = reorder(bases, 0)
+    reordered_bases_x = util.reorder(bases, 0)
     with open("tmp_base_x.txt", 'w') as output:
         for each in reordered_bases_x:
             output.write(str(each).replace(" ", "\t") + "\n")
         output.write(str(len(reordered_bases_x)))
 
     print("Reorder y")
-    reordered_bases_y = reorder(bases, 1)
+    reordered_bases_y = util.reorder(bases, 1)
     with open("tmp_base_y.txt", 'w') as output_y:
         for each in reordered_bases_y:
             output_y.write(str(each).replace(" ", "\t") + "\n")
