@@ -11,7 +11,7 @@ def dist(first: tuple, second: tuple) -> (float, str):
     return geopy.distance.vincenty(first, second).km
 
 def reorder(input:list, position: int):
-    """ Given a tuple and the position, reorder the list of tuple
+    """ Given a list of tuple and the position, reorder the list of tuple
     in numerical order based on the parameter. """
 
     if debug: print("reordering ")
@@ -24,7 +24,11 @@ def reorder(input:list, position: int):
     return_list = []
 
     # Find the lowest specific parameter value
+    count_loops = 0
     for i in tuples:
+        print(count_loops)
+        count_loops += 1
+       
         min_val = tuples[0][position]
         min_pos = 0
 

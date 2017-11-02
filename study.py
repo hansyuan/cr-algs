@@ -2,7 +2,8 @@
 import read
 import util
 import copy
-
+import time
+from operator import itemgetter
 
 debug = True
 """
@@ -55,36 +56,74 @@ def surrounding_points(point: tuple, delta: float, data: list, reordered_data: l
     return all_the_surrounding_points
 
 
+
+
 if __name__ == "__main__":
 
     data = (calls, bases, demands, times) = read.populate_data()
 
-    # re_x = util.reorder(bases, 0)
+    # re_x = util.reorder(calls, 0)
     # for x in range(len(bases)):
-    #     surrounding = surrounding_points(bases[x], 0.2, bases, reordered_data=re_x)
+    #     surrounding = surrounding_points(calls[x], 0.2, bases, reordered_data=re_x)
     #     if surrounding:
     #         print("Result of search with the delta: " , surrounding)
 
-    re_x = util.reorder(demands, 0)
-    for x in range(len(demands)):
-        surrounding = surrounding_points(demands[x], 2, demands, reordered_data=re_x)
+    # Generate a list of calls, using the list of tuples of GPS coordinates of string. 
+
+    converted_calls = []
+    first = True
+    for tup in calls:
+        if first: 
+            first = False
+            continue
+
+        x = tuple([float(tup[1]), float(tup[2])])
+        print (x)
+        converted_calls.append( x )
+
+    #reorder_x_positions = util.reorder(converted_calls, 0)
+
+    print(converted_calls)
+    reorder_x_positions = converted_calls.sort(key=itemgetter(0))
+
+    for c in converted_calls:
+        print (c) 
+
+    
+    print("wow")
+
+    for i in range(len(calls)):
+        print(i)
+        surrounding = surrounding_points(
+            converted_calls[i], 
+            0.3, 
+            [], 
+            reordered_data=converted_calls)
+
         if surrounding:
             print("Result of search with the delta: ", surrounding)
-    exit()
 
-    print("Reorder x")
-    reordered_bases_x = util.reorder(bases, 0)
-    with open("tmp_base_x.txt", 'w') as output:
-        for each in reordered_bases_x:
-            output.write(str(each).replace(" ", "\t") + "\n")
-        output.write(str(len(reordered_bases_x)))
 
-    print("Reorder y")
-    reordered_bases_y = util.reorder(bases, 1)
-    with open("tmp_base_y.txt", 'w') as output_y:
-        for each in reordered_bases_y:
-            output_y.write(str(each).replace(" ", "\t") + "\n")
-        output_y.write(str(len(reordered_bases_y)))
+    # re_x = util.reorder(demands, 0)
+    # for x in range(len(demands)):
+        # surrounding = surrounding_points(demands[x], 1, demands, reordered_data=re_x)
+        # if surrounding:
+        #     print("Result of search with the delta: ", surrounding)
+    # exit()
+
+    # print("Reorder x")
+    # reordered_bases_x = util.reorder(bases, 0)
+    # with open("tmp_base_x.txt", 'w') as output:
+    #     for each in reordered_bases_x:
+    #         output.write(str(each).replace(" ", "\t") + "\n")
+    #     output.write(str(len(reordered_bases_x)))
+
+    # print("Reorder y")
+    # reordered_bases_y = util.reorder(bases, 1)
+    # with open("tmp_base_y.txt", 'w') as output_y:
+    #     for each in reordered_bases_y:
+    #         output_y.write(str(each).replace(" ", "\t") + "\n")
+    #     output_y.write(str(len(reordered_bases_y)))
 
 
     # x = util.diff_dist(data, 575, 54)
