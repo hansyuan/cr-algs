@@ -1,4 +1,7 @@
 from read import openfile_as_listoflist
+import scipy
+
+
 
 if __name__ == "__main__":
 

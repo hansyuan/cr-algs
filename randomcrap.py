@@ -48,7 +48,7 @@ def calculate_distances():
     # Break the list into n lists and run all n^2 multiplications
     # TODO Generalize this to x many threads.
     first = list_coords[0:int(num_coor/2)]
-    second = list_coords[int(num_coor/2) + 1: ]
+    second = list_coords[int(num_coor/2) + 1:]
 
     # Allow the number of calcs to be done printed:
     while wait > 0:
@@ -69,6 +69,7 @@ def calculate_distances():
         t.start()
 
     return
+
 
 if __name__ == "__main__":
     calculate_distances()
