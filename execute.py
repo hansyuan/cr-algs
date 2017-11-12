@@ -54,13 +54,19 @@ def set_coverage():
     
     print("Clustered calls represented by %d points:" %(rep_calls))
     plt.scatter(x_k, y_k, c = 'red') 
-    
     plt.show()
     
-    print("Overlay the bases by the clustered demand points:")
+    print("Overlay the demand points by the clustered demand points:")
     plt.scatter(x_all, y_all, c = 'blue')
     plt.scatter(x_k, y_k, c = 'red')
     plt.show()
+    
+    print("Overlay the bases by the clustered demand points:")
+    plt.scatter(x_bases, y_bases, c='green')
+    plt.scatter(x_k, y_k, c = 'red')
+    plt.show()
+    
+    print(" I did not remove the redundant Mexico City data yet. ")
 
 
 def find_starting_set():
