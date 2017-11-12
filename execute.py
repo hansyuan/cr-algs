@@ -12,8 +12,14 @@ from matplotlib import pyplot as plt
 import read_data
 import search
 
+# Given a list of points (x,y) , plot them.
+def plot(list_of_points: list, color=None) -> None:
+    x = [p[0] for p in list_of_points]
+    y = [p[1] for p in list_of_points]
+    plt.scatter(x, y, c=color)
+    
 
-def set_coverage():
+def initial():
     (calls, bases, demands, times, converted_calls) = read_data.populate_data()
 
     # Reorder calls by x or y coordinate
@@ -24,23 +30,17 @@ def set_coverage():
     re_y = temp_calls
     
     # Points of all the bases
-    x_bases = [b[0] for b in bases]
-    y_bases = [b[1] for b in bases]
-    plt.scatter(x_bases, y_bases, c='green')
+    plot(bases, "green")
     print("All the bases:")
     plt.show()
 
     # Points of all the calls
-    x_all = [calls[0] for calls in converted_calls]
-    y_all = [calls[1] for calls in converted_calls]
-
+    plot(converted_calls, "blue")
     print("Every single call:")
-    plt.scatter(x_all, y_all, c = 'blue')
     plt.show()
 
     # Begin using clustering methods here.
     a = array(converted_calls)
-    
     w = whiten(a)
     Z = cluster.hierarchy.linkage(converted_calls, "complete")
     cut = cluster.hierarchy.fcluster(Z, 10, criterion="distance")
@@ -49,27 +49,41 @@ def set_coverage():
     rep_calls = 10
     kd = kmeans(a, rep_calls)
     kd = [k for k in kd[0]]
-    x_k = [k[0] for k in kd]
-    y_k = [k[1] for k in kd]
     
-    print("Clustered calls represented by %d points:" %(rep_calls))
-    plt.scatter(x_k, y_k, c = 'red') 
+    plot(kd, "red")
+    print("Clustered calls represented by %d points:" %(rep_calls)) 
     plt.show()
     
     print("Overlay the demand points by the clustered demand points:")
-    plt.scatter(x_all, y_all, c = 'blue')
-    plt.scatter(x_k, y_k, c = 'red')
+    plot(converted_calls, "blue")
+    plot(kd, "red")
     plt.show()
     
     print("Overlay the bases by the clustered demand points:")
-    plt.scatter(x_bases, y_bases, c='green')
-    plt.scatter(x_k, y_k, c = 'red')
+    plot(bases, "green")
+    plot(kd, "red")
     plt.show()
     
     print(" I did not remove the redundant Mexico City data yet. ")
 
 
 def find_starting_set():
+    r1 = 600 
+    top_n = 10
+    
+    (calls, bases, demands, times, converted_calls) = read_data.populate_data()
+    call_array = array(converted_calls)
+    calls_clustered = kmeans(call_array, top_n)
+    
+    print(calls_clustered)
+    print()
+    i = 0
+    for each in calls_clustered[0]:
+        print(i, ((each[0])), type(each))
+        i += 1
+    
+    
+    
     # For of the 100 clustered demands points,
     
     # Determine whether a base in the set of n bases 

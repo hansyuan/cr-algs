@@ -27,6 +27,7 @@ def surrounding_points(point: tuple, delta: float, data: list, reordered_data: l
         x_ordered = reordered_data
     else:
         x_ordered = util.reorder(data, 0)
+        
 
     for i in range(len(x_ordered)):
         if x_ordered[i][0] == x:
@@ -61,7 +62,9 @@ def surrounding_points(point: tuple, delta: float, data: list, reordered_data: l
         count_found = 0
         if distance < delta:
 
-            if print_found: print("Found: ", (x,y), x_ordered[curr_x], "\tDistance:\t", distance)
+            if print_found: 
+                print("Found: ", (x,y), x_ordered[curr_x], 
+                      "\tDistance:\t", distance)
             count_found += 1
             all_the_surrounding_points.append(x_ordered[curr_x])
 
@@ -79,7 +82,10 @@ def surrounding_points(point: tuple, delta: float, data: list, reordered_data: l
         distance = util.dist(x_ordered[i], x_ordered[curr_x])
 
         if distance < delta:
-            if print_found: print("Found: ", x_ordered[i], x_ordered[curr_x], "\tDistance:\t", distance)
+            if print_found: 
+                print("Found: ", 
+                      x_ordered[i], x_ordered[curr_x], 
+                      "\tDistance:\t", distance)
             count_found += 1
             all_the_surrounding_points.append(x_ordered[curr_x])
         curr_x -= 1
