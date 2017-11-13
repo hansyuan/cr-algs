@@ -82,7 +82,7 @@ def initial(run=True):
     
     
     
-def find_starting_set(run=True):
+def find_starting_set(run=True, display = False):
     """ For of the 100 clustered demands points,
     
     Determine whether a base in the set of n bases 
@@ -112,10 +112,10 @@ def find_starting_set(run=True):
     # Get the first coordinate, then find the closest actual base.
     calls_clustered_list = calls_kmeans[0]
     
-    print("For each representative call point, find the bases. \n")
+    if display: print("For each representative call point, find the bases. \n")
     
     for each_call in calls_clustered_list:
-        print("\n")
+        if display: print("\n")
         
         # Search for points. If it empty, then redo it.
         delta = 0.01
@@ -137,31 +137,77 @@ def find_starting_set(run=True):
         ))
         
         
-        plot([each_call], "red")
+        if display: 
+            plot([each_call], "red")
         
-        print("-----------------------------------------------------")
-        print(each_call, " with distance of %.2f km  "%(delta) )
-        print("-----------------------------------------------------")
+            print("-----------------------------------------------------")
+            print(each_call, " with distance of %.2f km  "%(delta) )
+            print("-----------------------------------------------------")
         
-        for each in actual:
-            print(each)
-            plot([each[0]], "green")
-            
-        plt.show()
-        
-        
-    print ("<< EOF >>")
+            for each in actual:
+                print(each)
+                plot([each[0]], "green")
+
+            plt.show()
+    if display: print ("<< EOF >>")
     return clust_call_to_base
 
 
-def check_coverage():
+def check_coverage(chosen_bases:list):
     global calls, bases, demands, times, converted_calls
     """ This function will return the rate of the number of actual demand
     points that is covered by the chosen 8 bases. 
     
     Obviously the higher the number, the better the coverage. """
+
+    demands_to_cover = []
+    
+    # Define converted_call to be (x, y, covered=T/F)
+    index = 0
+    
+    # Our list of calls has the format [x, y, index for times, covered by bases]
+    for c in demands:
+        
+        cover_point = [
+            c[0], c[1], # the (x,y)
+            index,
+            False
+        ]
+        
+        index += 1
+        demands_to_cover.append(cover_point)
     
     
-    
-    # 
-    return
+    # FOR EACH BASE, MARK THE SURROUNDING DEMAND 
+    for each_base in chosen_bases:
+        
+        # each_clustered_call [list of bases] [first base chosen] [point] [give back base index]
+        # print(each_base)
+        # print(each_base[1])
+        # print(each_base[1][0])
+        # print(each_base[1][0][0])
+        # print(each_base[1][0][0][2])
+        
+        #                                                       Why 
+        
+        
+        base_index = each_base[1][0][0][2] 
+        
+        # This is some pretty coarse logic: 
+        # Set of 8 ambulance locations as bases -> the 100 demand points -> coverage
+        
+        for each_call in demands_to_cover:
+            # print(each_call)
+            demand_index = each_call[2]
+            
+            # print(base_index, demand_index)
+            if search.diff_time(times, base_index, demand_index) < r1:
+                demands_to_cover[demand_index][3] = True
+                
+        num_covered = 0
+        for each_demand in demands_to_cover:
+            if each_demand[3]: # T/F (At some point, I really should use object oriented programming
+                num_covered += 1
+                
+                
+    return num_covered

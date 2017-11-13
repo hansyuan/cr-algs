@@ -31,9 +31,9 @@ def diff_dist(data, base_index, demand_index):
     return (x,y)
 
 
-def diff_time(data, base_index, demand_index):
+def diff_time(times, base_index, demand_index):
     """ Returns time diff by database lookup. Based on raw given data. """
-    (calls, bases, demands, times) = data
+    #(calls, bases, demands, times) = data
     diff = times[base_index][demand_index] / 60.0
     return diff
 
