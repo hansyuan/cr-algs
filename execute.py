@@ -15,7 +15,7 @@ import search
 (calls, bases, demands, times, converted_calls) = read_data.populate_data()
 calls_kmeans = None
 r1 = 600 
-top_n = 10
+top_n = 8
 
 # Given a list of points (x,y) , plot them.
 def plot(list_of_points: list, color=None) -> None:        
