@@ -1,4 +1,4 @@
-# CSE 199
+# Cruz Roja Ambulance Algorithms
 
 ## Winter 2018
 
@@ -6,7 +6,10 @@
 
 In the previous quarter, we accomplished the following:
 
-- Come with a few metrics. 
+- Come with a few metrics. These included
+	- _Overall coverage_: 
+	- _Disruption_: 
+	- _Desirability (new)_:
 
 
 
