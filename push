@@ -7,7 +7,12 @@ if len(argv) < 2:
     print ("I need a commit message!")
     exit()
 
-os.system("git add -A")
-os.system('git commit -m "' + argv[1] +'"')
-os.system('git push')
+def run_c (cmd):
+	print(cmd)
+	os.system(cmd)
+	print()
+
+run_c ("git add -A")
+run_c ('git commit -m "' + argv[1] +'"')
+run_c ('git push')
 
