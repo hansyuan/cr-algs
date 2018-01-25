@@ -30,7 +30,7 @@
 
 ### Currently
 
-*Big Picture*: have a program that takes locations as input, then creating
+**Big Picture**: have a program that takes locations as input, then creating
 recommendations using those metrics.
 
 - Improve the metric. Can the numbers give better intuitive understanding?
