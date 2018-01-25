@@ -4,18 +4,30 @@
 
 ### Tips
 
-Tip 1.  Start simple
-Tip 2.  Look at raw data
-Tip 3.  Be concrete
-Tip 4.  Incremental results
-Tip 5.  Find something interesting
-Tip 6.  Push hard on clean signals
-Tip 7.  Actionable
-Tip 8.  Comparative advantage is key
-Tip 9.  Find solid levers to pull
-Tip 10. Document successes and failures
-Tip 11. Inspect outliers
-Tip 12. Eliminate sources of bias
+- Tip 1.  Start simple
+
+- Tip 2.  Look at raw data
+
+- Tip 3.  Be concrete
+
+- Tip 4.  Incremental results
+
+- Tip 5.  Find something interesting
+
+- Tip 6.  Push hard on clean signals
+
+- Tip 7.  Actionable
+
+- Tip 8.  Comparative advantage is key
+
+- Tip 9.  Find solid levers to pull
+
+- Tip 10. Document successes and failures
+
+- Tip 11. Inspect outliers
+
+- Tip 12. Eliminate sources of bias
+
 
 
 ### Past
