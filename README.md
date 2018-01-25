@@ -28,16 +28,21 @@
 
 - Tip 12. Eliminate sources of bias
 
-### Currently
+### Goals
 
 **Big Picture**: have a program that takes locations as input, then creating
 recommendations using those metrics.
 
 - Improve the metric. Can the numbers give better intuitive understanding?
 
+	- This can be done by looking at how the data is being used to calculate the 
+	numbers. 
+
 - Scale up the metric. Can it be made more useful for a more realistic scenario,
 like multiple ambulances in action at once? Simultaneous dispatch?
 
+	- Should it consider one and then another? That would be one case. Simultaneous 
+	consideration is another case. 
 
 ### Past
 
