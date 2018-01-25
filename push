@@ -8,9 +8,9 @@ if len(argv) < 2:
     exit()
 
 def run_c (cmd):
-	print(cmd)
+	print(cmd + "\n")
 	os.system(cmd)
-	print("\n")
+	print("")
 
 run_c ("git add -A")
 run_c ('git commit -m "' + argv[1] +'"')
