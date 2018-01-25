@@ -32,19 +32,19 @@
 
 ### Past
 
-In the previous quarter, we accomplished the following:
+In the previous quarter, we came up with a few metrics. These included:
 
-- Come with a few metrics. These included
-	- _Overall coverage_: x/y where x is number of covered demand points 
-	and y the size of the set of bases
-	- _Disruption_: (x1-x2)/y where x1 is the original covered demand
-	points, x2 is the loss in coverage, and y is the total number of bases. 
+- _Overall coverage_: x/y where x is number of covered demand points 
+and y the size of the set of bases
 
-	- _Travel Time_: t where t is the number of seconds it takes for 
-	an ambulance to leave the base and arrive at the patient.
+- _Disruption_: (x1-x2)/y where x1 is the original covered demand
+points, x2 is the loss in coverage, and y is the total number of bases. 
 
-	- _Desirability (new)_: a new relational metric between disruption and 
-	travel time
+- _Travel Time_: t where t is the number of seconds it takes for 
+an ambulance to leave the base and arrive at the patient.
+
+- _Desirability (new)_: a new relational metric between disruption and 
+travel time
 
 ### Currently
 
