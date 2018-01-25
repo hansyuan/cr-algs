@@ -35,7 +35,6 @@
 In the previous quarter, we accomplished the following:
 
 - Come with a few metrics. These included
-
 	- _Overall coverage_: x/y where x is number of covered demand points 
 	and y the size of the set of bases
 
