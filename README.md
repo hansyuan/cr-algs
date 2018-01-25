@@ -1,8 +1,6 @@
-# Cruz Roja Ambulance Algorithms
+# Cruz Roja Ambulance Algorithms WI 18
 
-## Winter 2018
-
-### Tips
+## Tips
 
 - Tip 1.  Start simple
 
@@ -28,7 +26,7 @@
 
 - Tip 12. Eliminate sources of bias
 
-### Goals
+## Goals
 
 **Big Picture**: have a program that takes locations as input, then creating
 recommendations using those metrics.
@@ -44,7 +42,7 @@ like multiple ambulances in action at once? Simultaneous dispatch?
 	- Should it consider one and then another? That would be one case. Simultaneous 
 	consideration is another case. 
 
-### Past
+## Past
 
 In the previous quarter, we came up with a few metrics. These included:
 
