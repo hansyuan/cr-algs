@@ -10,7 +10,7 @@ if len(argv) < 2:
 def run_c (cmd):
 	print(cmd + "\n")
 	os.system(cmd)
-	print("")
+	print("---")
 
 run_c ("git add -A")
 run_c ('git commit -m "' + argv[1] +'"')
