@@ -37,7 +37,6 @@ In the previous quarter, we accomplished the following:
 - Come with a few metrics. These included
 	- _Overall coverage_: x/y where x is number of covered demand points 
 	and y the size of the set of bases
-
 	- _Disruption_: (x1-x2)/y where x1 is the original covered demand
 	points, x2 is the loss in coverage, and y is the total number of bases. 
 
