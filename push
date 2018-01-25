@@ -8,7 +8,7 @@ if len(argv) < 2:
     exit()
 
 def run_c (cmd):
-	print(cmd + "\n")
+	print("---\n[" + cmd + "]\n")
 	os.system(cmd)
 	print("---")
 
