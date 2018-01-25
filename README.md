@@ -28,6 +28,15 @@
 
 - Tip 12. Eliminate sources of bias
 
+### Currently
+
+*Big Picture*: have a program that takes locations as input, then creating
+recommendations using those metrics.
+
+- Improve the metric. Can the numbers give better intuitive understanding?
+
+- Scale up the metric. Can it be made more useful for a more realistic scenario,
+like multiple ambulances in action at once? Simultaneous dispatch?
 
 
 ### Past
@@ -46,7 +55,7 @@ an ambulance to leave the base and arrive at the patient.
 - _Desirability (new)_: a new relational metric between disruption and 
 travel time
 
-### Currently
+
 
 
 
