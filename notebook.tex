@@ -1,0 +1,1724 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{simulator}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \hypertarget{simulation}{%
+\section{Simulation}\label{simulation}}
+
+Goal: to run a simulation based on \textbf{real-time location} tracking
+of ambulances. The simulation itself may or may not be used. But I hope
+that the \textbf{modules/ideas} making up this simulation could end up
+being useful.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{Clocked}
+\item
+  \texttt{Case\ events} are randomly entered
+\end{itemize}
+
+Personal note:
+\href{https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet}{Github
+Markdown Including YouTube Videos}
+
+More information written below.
+
+    \hypertarget{taking-in-cases}{%
+\section{Taking in Cases:}\label{taking-in-cases}}
+
+Okay, so now that I have clock, I want to implement reading in the cases
+that happen in ``real'' time.
+
+\hypertarget{easy-but-false-simulation}{%
+\subsubsection{Easy but False
+Simulation}\label{easy-but-false-simulation}}
+
+\begin{itemize}
+\item
+  One way I could do that is to read it from a file. Characteristics of
+  the events would be:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{GPS\ Location}
+  \item
+    \texttt{Severity}
+  \item
+    \texttt{Time\ it\ comes\ in}
+  \end{itemize}
+\item
+  Characteristics of the case that are unpredictable, but useful:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The \texttt{time} it takes to accomplish the case
+  \item
+    The actual \texttt{travel\ time}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{harder-but-realistic-simulation}{%
+\subsubsection{Harder but Realistic
+Simulation}\label{harder-but-realistic-simulation}}
+
+\begin{itemize}
+\item
+  The other thing I could do is to have the events happen
+  \texttt{randomly}. This is not hard.
+\item
+  The last thing I could do is to \texttt{manually\ input} the events
+  which is the most difficult since this would be a continuous program
+  that reacts based on user inputs. It would probably use GRPCs.
+\item
+  The random events can be shaped by seeds, which means we may be able
+  to \texttt{shape\ the\ way\ new\ events\ are\ initialized}.
+\end{itemize}
+
+    \hypertarget{implementing-the-simulation}{%
+\section{Implementing the
+Simulation}\label{implementing-the-simulation}}
+
+\begin{itemize}
+\tightlist
+\item
+  Ambulances should be timed out. When they are sent on cases, they are
+  timed in. There is a \texttt{time\ t} the ambulance is on-case. When
+  the time finishes, it returns to Idle.
+\item
+  New cases are started when the \texttt{arguments} come in and the time
+  matches its start date. The other way to start cases is based on real
+  time: manually input it.
+\item
+  We can randomly generate the \texttt{timeline} of cases that will
+  backbone the simulation.
+\end{itemize}
+
+    \hypertarget{data-structures-abc}{%
+\section{Data Structures (ABC)}\label{data-structures-abc}}
+
+\hypertarget{ambulances}{%
+\subsubsection{Ambulances}\label{ambulances}}
+
+a dict of tuple ()
+
+\begin{verbatim}
+(1) n <-- number of ambulances
+(2) ambulance [n]
+(3) each ambulance --> <status, time on-case>
+\end{verbatim}
+
+\hypertarget{base-locations}{%
+\subsubsection{Base Locations}\label{base-locations}}
+
+array
+
+\begin{verbatim}
+(1) base location [x] where x <-- number of bases which is 100 
+\end{verbatim}
+
+\hypertarget{case-locations}{%
+\subsubsection{Case Locations}\label{case-locations}}
+
+array
+
+\begin{verbatim}
+(1) case location [y] where y <-- number of possible demand points 
+    for which we have travel times. 
+\end{verbatim}
+
+    \hypertarget{pseudocode-algorithm}{%
+\section{Pseudocode Algorithm}\label{pseudocode-algorithm}}
+
+I want to implement the following now:
+
+\begin{verbatim}
+for each time unit (t):
+    
+    update all times (t [amb1 .. amb_n])
+    
+    if a new case should start, then start it 
+    
+    if an on-case should end, then end it
+    
+    update the set coverage and coverage change (coverage, delta)
+    
+\end{verbatim}
+
+\hypertarget{next-goal}{%
+\section{Next Goal:}\label{next-goal}}
+
+After finishing up the clock and setting up data structures, combine
+with last quarter's work.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{time}
+        \PY{k+kn}{import} \PY{n+nn}{sys}
+        \PY{k+kn}{import} \PY{n+nn}{random}
+        \PY{k+kn}{from} \PY{n+nn}{enum} \PY{k}{import} \PY{n}{Enum}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{class} \PY{n+nc}{Status}\PY{p}{(}\PY{n}{Enum}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} For ambulances \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{IDLE} \PY{o}{=} \PY{l+m+mi}{1}
+            \PY{n}{ACTIVE} \PY{o}{=} \PY{l+m+mi}{2}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{class} \PY{n+nc}{DataSource}\PY{p}{(}\PY{n}{Enum}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} There are at least three sources of events for the simulation. \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{RANDOM} \PY{o}{=} \PY{l+m+mi}{1}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{generate\PYZus{}random\PYZus{}amb\PYZus{}event}\PY{p}{(}\PY{n}{amb\PYZus{}status}\PY{p}{,} \PY{n}{ambulance\PYZus{}set}\PY{p}{,} \PY{n}{demand\PYZus{}set}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Given the set of ambulances and the set of demand points, randomly generate an event \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} The return type should specify ambulance and demand point. \PYZdq{}\PYZdq{}\PYZdq{}}
+            
+            \PY{n}{chosen\PYZus{}amb} \PY{o}{=} \PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{amb\PYZus{}status}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+            
+            \PY{k}{return} \PY{p}{(}\PY{n}{chosen\PYZus{}amb}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}next\PYZus{}event}\PY{p}{(}\PY{n}{amb\PYZus{}status}\PY{p}{,} \PY{n}{data\PYZus{}source}\PY{p}{,} \PY{n}{ambulance\PYZus{}set}\PY{p}{,} \PY{n}{demand\PYZus{}set}\PY{p}{,} \PY{n}{src\PYZus{}file}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Reads the next event from data set or generates one. \PYZdq{}\PYZdq{}\PYZdq{}}
+            
+            \PY{k}{if} \PY{n}{data\PYZus{}source} \PY{o+ow}{is} \PY{n}{DataSource}\PY{o}{.}\PY{n}{RANDOM}\PY{p}{:}
+                \PY{p}{(}\PY{n}{amb}\PY{p}{,} \PY{n}{demand}\PY{p}{)} \PY{o}{=} \PY{n}{generate\PYZus{}random\PYZus{}amb\PYZus{}event}\PY{p}{(}\PY{n}{amb\PYZus{}status}\PY{p}{,} \PY{n}{ambulance\PYZus{}set}\PY{p}{,} \PY{n}{demand\PYZus{}set}\PY{p}{)}
+            
+            \PY{k}{else}\PY{p}{:} 
+                \PY{k}{raise} \PY{n+ne}{Exception} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{This should not happen.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                
+            \PY{k}{return} \PY{p}{(}\PY{n}{amb}\PY{p}{,} \PY{n}{demand}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{change\PYZus{}state}\PY{p}{(}\PY{n}{amb\PYZus{}status}\PY{p}{,} \PY{n}{chosen\PYZus{}amb}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Takes the ambulance status dictionary, and an event. Toggles ambulance setting \PYZdq{}\PYZdq{}\PYZdq{}}    
+            
+            \PY{k}{if} \PY{n+nb}{type}\PY{p}{(}\PY{n}{amb\PYZus{}status}\PY{p}{)} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb}{dict}\PY{p}{:} \PY{k}{raise} \PY{n+ne}{Exception}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Wrong type. }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} 
+                
+            
+            \PY{k}{for} \PY{n}{each} \PY{o+ow}{in} \PY{n}{amb\PYZus{}status}\PY{p}{:}
+                \PY{p}{(}\PY{n}{status}\PY{p}{,} \PY{n}{time}\PY{p}{)} \PY{o}{=} \PY{n}{amb\PYZus{}status}\PY{p}{[}\PY{n}{each}\PY{p}{]}
+                \PY{k}{if} \PY{n}{time} \PY{o}{\PYZgt{}} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{:} \PY{n}{amb\PYZus{}status}\PY{p}{[}\PY{n}{each}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{status}\PY{p}{,} \PY{n}{time} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}
+                \PY{k}{if} \PY{n}{amb\PYZus{}status}\PY{p}{[}\PY{n}{each}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{1200}\PY{p}{:}
+                    \PY{n}{amb\PYZus{}status}\PY{p}{[}\PY{n}{each}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{Status}\PY{o}{.}\PY{n}{IDLE}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+            
+            \PY{k}{if} \PY{n}{chosen\PYZus{}amb} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:} 
+                \PY{k}{return}
+            
+            \PY{c+c1}{\PYZsh{} TODO This line of code is not supposed to be here. }
+            \PY{k}{if} \PY{n}{amb\PYZus{}status}\PY{p}{[}\PY{n}{chosen\PYZus{}amb}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{:}
+                \PY{n}{amb\PYZus{}status}\PY{p}{[}\PY{n}{chosen\PYZus{}amb}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{Status}\PY{o}{.}\PY{n}{ACTIVE}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{)}
+                
+            
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{execute\PYZus{}simulation}\PY{p}{(}\PY{n}{run\PYZus{}time}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{speed\PYZus{}times}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{amb\PYZus{}status} \PY{o}{=} \PY{k+kc}{None}\PY{p}{,} 
+                          \PY{n}{data\PYZus{}source} \PY{o}{=} \PY{k+kc}{None}\PY{p}{,} \PY{n}{ambulance\PYZus{}set} \PY{o}{=} \PY{k+kc}{None}\PY{p}{,} \PY{n}{demand\PYZus{}set} \PY{o}{=} \PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Starts a clock \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Every unit of time, update the next ambulance event, print, update time. \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Each ambulance should also know how long it\PYZsq{}s gone for. It should keep track of itself. \PYZdq{}\PYZdq{}\PYZdq{}}
+            
+            \PY{k}{if} \PY{n}{amb\PYZus{}status} \PY{o}{==} \PY{k+kc}{None}\PY{p}{:} \PY{k}{raise} \PY{n+ne}{Exception} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{param amb\PYZus{}status is None}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{if} \PY{n+nb}{type}\PY{p}{(}\PY{n}{amb\PYZus{}status}\PY{p}{)} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb}{dict}\PY{p}{:} \PY{k}{raise} \PY{n+ne}{Exception} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{amb\PYZus{}status wrong type}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{if} \PY{n+nb}{type}\PY{p}{(}\PY{n}{run\PYZus{}time}\PY{p}{)} \PY{o+ow}{is} \PY{o+ow}{not} \PY{n+nb}{int}\PY{p}{:} \PY{k}{raise} \PY{n+ne}{Exception}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{run\PYZus{}time not int}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{}     if type(speed\PYZus{}times) is not int: raise Exception(\PYZdq{}speed\PYZus{}times not int\PYZdq{})}
+        
+            \PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+            \PY{n}{time\PYZus{}diff} \PY{o}{=} \PY{l+m+mi}{0}
+        
+            \PY{k}{while} \PY{k+kc}{True}\PY{p}{:}
+                \PY{p}{(}\PY{n}{chosen\PYZus{}amb}\PY{p}{,} \PY{n}{demand\PYZus{}location}\PY{p}{)} \PY{o}{=} \PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+                \PY{n}{time}\PY{o}{.}\PY{n}{sleep}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{speed\PYZus{}times}\PY{p}{)}
+                
+                \PY{k}{if} \PY{n}{time\PYZus{}diff} \PY{o}{\PYZpc{}} \PY{l+m+mi}{60} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                    \PY{n+nb}{print} \PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Time: }\PY{l+s+si}{\PYZpc{}3i}\PY{l+s+s2}{ seconds}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}}\PY{p}{(}\PY{n}{time\PYZus{}diff}\PY{p}{)}\PY{p}{)}
+                
+                
+                
+                \PY{c+c1}{\PYZsh{} Read the next event and then change the state:}
+                
+                \PY{k}{if} \PY{n}{time\PYZus{}diff} \PY{o}{\PYZpc{}} \PY{l+m+mi}{300} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                    \PY{p}{(}\PY{n}{chosen\PYZus{}amb}\PY{p}{,} \PY{n}{demand\PYZus{}location}\PY{p}{)} \PY{o}{=} \PY{n}{get\PYZus{}next\PYZus{}event}\PY{p}{(}
+                        \PY{n}{amb\PYZus{}status}\PY{p}{,} \PY{n}{data\PYZus{}source}\PY{p}{,} \PY{n}{ambulance\PYZus{}set}\PY{p}{,} \PY{n}{demand\PYZus{}set}\PY{p}{,} \PY{k+kc}{None}\PY{p}{)}
+        
+                \PY{n}{change\PYZus{}state}\PY{p}{(}\PY{n}{amb\PYZus{}status}\PY{p}{,} \PY{n}{chosen\PYZus{}amb}\PY{p}{)}
+                
+                \PY{c+c1}{\PYZsh{} Prints out all the ambulance\PYZsq{}s status every simulated minute}
+                
+                \PY{k}{if} \PY{n}{time\PYZus{}diff} \PY{o}{\PYZpc{}} \PY{l+m+mi}{60} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The amb\PYZhy{}event is }\PY{l+s+s2}{\PYZdq{}} \PY{p}{,} \PY{p}{(}\PY{n}{chosen\PYZus{}amb}\PY{p}{,} \PY{n}{demand\PYZus{}location}\PY{p}{)}\PY{p}{)}
+                    \PY{k}{for} \PY{n}{ID} \PY{o+ow}{in} \PY{n}{amb\PYZus{}status}\PY{p}{:} 
+                        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Ambulance }\PY{l+s+si}{\PYZpc{}2i}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}}\PY{p}{(}\PY{n}{ID}\PY{p}{)}\PY{p}{,} \PY{n}{amb\PYZus{}status}\PY{p}{[}\PY{n}{ID}\PY{p}{]}\PY{p}{)}        
+                
+                    \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
+                    
+                \PY{c+c1}{\PYZsh{} Calculate the time passage.}
+                \PY{n}{now} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+                \PY{n}{time\PYZus{}diff} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{p}{(}\PY{n}{now} \PY{o}{\PYZhy{}} \PY{n}{start}\PY{p}{)} \PY{o}{*} \PY{n}{speed\PYZus{}times}\PY{p}{)}
+        
+                \PY{k}{if} \PY{n}{time\PYZus{}diff} \PY{o}{\PYZgt{}} \PY{n}{run\PYZus{}time}\PY{p}{:} \PY{k}{break} 
+                    
+                
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} The following two variables will change the speed and amount of time the simulation is run.}
+        
+        \PY{c+c1}{\PYZsh{} 2 hours}
+        \PY{n}{run\PYZus{}time} \PY{o}{=} \PY{l+m+mi}{3600} \PY{c+c1}{\PYZsh{} in simulated seconds}
+        
+        \PY{n}{speed} \PY{o}{=} \PY{l+m+mf}{1.5}  \PY{c+c1}{\PYZsh{} in (simulated seconds * speed) real seconds}
+        \PY{c+c1}{\PYZsh{} Dividing seconds by speed seems to be VERY detrimental}
+        
+        \PY{c+c1}{\PYZsh{} It\PYZsq{}s still possible to change the granularity of this unit of time. 1/10 of a second granularity could be better.}
+        
+        \PY{n}{ambulance\PYZus{}count} \PY{o}{=} \PY{l+m+mi}{10}
+        \PY{n}{amb\PYZus{}status} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}} 
+        
+        \PY{c+c1}{\PYZsh{} Each ambulance maps to a tuple (status, time active)}
+        \PY{k}{for} \PY{n}{ID} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{ambulance\PYZus{}count}\PY{p}{)}\PY{p}{:}
+            \PY{n}{amb\PYZus{}status}\PY{p}{[}\PY{n}{ID}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{Status}\PY{o}{.}\PY{n}{IDLE}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+        
+        \PY{n}{execute\PYZus{}simulation}\PY{p}{(}\PY{n}{run\PYZus{}time}\PY{o}{=}\PY{n}{run\PYZus{}time}\PY{p}{,} \PY{n}{speed\PYZus{}times}\PY{o}{=}\PY{n}{speed}\PY{p}{,} \PY{n}{amb\PYZus{}status} \PY{o}{=} \PY{n}{amb\PYZus{}status}\PY{p}{,} \PY{n}{data\PYZus{}source} \PY{o}{=} \PY{n}{DataSource}\PY{o}{.}\PY{n}{RANDOM}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Time:   0 seconds
+The amb-event is  (8, 0)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 0)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time:  10 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 10)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time:  20 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 20)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time:  30 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 30)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time:  40 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 40)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time:  50 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 50)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time:  60 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 60)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time:  70 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 70)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time:  80 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 80)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time:  90 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 90)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 100 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 100)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 110 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 110)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 120 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 120)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 130 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 130)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 140 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 140)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 150 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 150)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 160 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 160)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 170 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 170)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 180 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 180)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 190 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 190)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 200 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 200)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 210 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 210)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 220 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 220)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 230 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 230)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 240 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 239)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 250 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 249)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 260 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 259)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 270 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 269)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 280 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 279)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 290 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.IDLE: 1>, -1)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 289)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 300 seconds
+The amb-event is  (6, 0)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 0)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 299)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 310 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 10)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 309)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 320 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 20)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 319)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 330 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 30)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 329)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 340 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 40)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 339)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 350 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 50)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 349)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 360 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 60)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 359)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 370 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 70)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 369)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 380 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 80)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 379)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 390 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 90)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 389)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 400 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 100)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 399)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 410 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 110)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 409)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 420 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 120)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 419)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 430 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 130)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 429)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 440 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 140)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 439)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 450 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 150)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 449)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 460 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 160)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 459)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 470 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 170)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 469)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 480 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 180)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 479)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 490 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 189)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 488)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 500 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 199)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 498)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 510 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 209)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 508)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 520 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 219)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 518)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 530 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 229)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 528)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 540 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 239)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 538)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 550 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 249)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 548)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 560 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 259)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 558)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 570 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 269)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 568)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 580 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 279)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 578)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 590 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.IDLE: 1>, -1)
+Ambulance  6	 (<Status.ACTIVE: 2>, 289)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 588)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 600 seconds
+The amb-event is  (5, 0)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 0)
+Ambulance  6	 (<Status.ACTIVE: 2>, 299)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 598)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 610 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 10)
+Ambulance  6	 (<Status.ACTIVE: 2>, 309)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 608)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 620 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 20)
+Ambulance  6	 (<Status.ACTIVE: 2>, 319)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 618)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 630 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 30)
+Ambulance  6	 (<Status.ACTIVE: 2>, 329)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 628)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 640 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 40)
+Ambulance  6	 (<Status.ACTIVE: 2>, 339)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 638)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 650 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 50)
+Ambulance  6	 (<Status.ACTIVE: 2>, 349)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 648)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 660 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 60)
+Ambulance  6	 (<Status.ACTIVE: 2>, 359)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 658)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 670 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 70)
+Ambulance  6	 (<Status.ACTIVE: 2>, 369)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 668)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 680 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 80)
+Ambulance  6	 (<Status.ACTIVE: 2>, 379)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 678)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 690 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 90)
+Ambulance  6	 (<Status.ACTIVE: 2>, 389)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 688)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 700 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 100)
+Ambulance  6	 (<Status.ACTIVE: 2>, 399)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 698)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 710 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 110)
+Ambulance  6	 (<Status.ACTIVE: 2>, 409)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 708)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 720 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 120)
+Ambulance  6	 (<Status.ACTIVE: 2>, 419)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 718)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 730 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 130)
+Ambulance  6	 (<Status.ACTIVE: 2>, 429)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 728)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 740 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 139)
+Ambulance  6	 (<Status.ACTIVE: 2>, 438)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 737)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 750 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 149)
+Ambulance  6	 (<Status.ACTIVE: 2>, 448)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 747)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 760 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 159)
+Ambulance  6	 (<Status.ACTIVE: 2>, 458)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 757)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 770 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 169)
+Ambulance  6	 (<Status.ACTIVE: 2>, 468)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 767)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 780 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 179)
+Ambulance  6	 (<Status.ACTIVE: 2>, 478)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 777)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 790 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 189)
+Ambulance  6	 (<Status.ACTIVE: 2>, 488)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 787)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 800 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 199)
+Ambulance  6	 (<Status.ACTIVE: 2>, 498)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 797)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 810 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 209)
+Ambulance  6	 (<Status.ACTIVE: 2>, 508)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 807)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 820 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 219)
+Ambulance  6	 (<Status.ACTIVE: 2>, 518)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 817)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 830 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 229)
+Ambulance  6	 (<Status.ACTIVE: 2>, 528)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 827)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+Time: 840 seconds
+The amb-event is  (-1, -1)
+Ambulance  0	 (<Status.IDLE: 1>, -1)
+Ambulance  1	 (<Status.IDLE: 1>, -1)
+Ambulance  2	 (<Status.IDLE: 1>, -1)
+Ambulance  3	 (<Status.IDLE: 1>, -1)
+Ambulance  4	 (<Status.IDLE: 1>, -1)
+Ambulance  5	 (<Status.ACTIVE: 2>, 239)
+Ambulance  6	 (<Status.ACTIVE: 2>, 538)
+Ambulance  7	 (<Status.IDLE: 1>, -1)
+Ambulance  8	 (<Status.ACTIVE: 2>, 837)
+Ambulance  9	 (<Status.IDLE: 1>, -1)
+
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+        ---------------------------------------------------------------------------
+
+        KeyboardInterrupt                         Traceback (most recent call last)
+
+        <ipython-input-8-692bdd24e990> in <module>()
+         16     amb\_status[ID] = (Status.IDLE, -1)
+         17 
+    ---> 18 execute\_simulation(run\_time=run\_time, speed\_times=speed, amb\_status = amb\_status, data\_source = DataSource.RANDOM)
+    
+
+        <ipython-input-7-f63237c5d581> in execute\_simulation(run\_time, speed\_times, amb\_status, data\_source, ambulance\_set, demand\_set)
+         15     while True:
+         16         (chosen\_amb, demand\_location) = (-1, -1)
+    ---> 17         time.sleep(1/speed\_times)
+         18 
+         19         if time\_diff \% 10 == 0:
+
+
+        KeyboardInterrupt: 
+
+    \end{Verbatim}
+
+    There is a bug with randomly generating events. If I choose an on-duty
+ambulance, the case is not well-defined. This program should really be
+running on terminal.
+
+The unit of time should be seconds, since that is what the data uses and
+it seems granular yet efficient enough.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
