@@ -33,9 +33,12 @@ class call_event:
 
 		return (display)
 
+def __main__():
+	p = (1,2)
+	q = (1,2,3,4,5,6)
 
-p = (1,2)
-q = (1,2,3,4,5,6)
+	event1 = call_event (p, q)
+	print(event1)
 
-event1 = call_event (p, q)
-print(event1)
+if __name__ == "__main__":
+	__main__()
