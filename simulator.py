@@ -5,15 +5,8 @@ import time
 import sys
 import random
 from enum import Enum
+from amb_enums import *
 
-class Status(Enum):
-    """ For ambulances """
-    IDLE = 1
-    ACTIVE = 2
-
-class DataSource(Enum):
-    """ There are at least three sources of events for the simulation. """
-    RANDOM = 1
     
 def generate_random_amb_event(amb_status, ambulance_set, demand_set):
     """ Given the set of ambulances and the set of demand points, randomly generate an event """

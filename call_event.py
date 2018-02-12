@@ -1,3 +1,5 @@
+from IPython import embed 
+
 # Class definition for events
 class call_event:
 	def __init__(self, location, datetime):
@@ -27,7 +29,7 @@ class call_event:
 
 	def __str__(self):
 		display = ""
-		# display += "Location in lat, lon: (%f, %f) \n" %(self.lat, self.lon)
+		display += "Location in lat, lon: (%f, %f) \n" %(self.lat, self.lon)
 		display += "Datetime: %04i/%02i/%02i %02i:%02i:%02i" %(self.year, 
 			self.month, self.day, self.hour, self.minute, self.second)
 
