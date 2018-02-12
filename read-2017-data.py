@@ -1,6 +1,9 @@
 #!/usr/local/bin/python3
 import time
 import csv
+from call_events import call_event
+import operator
+
 from dateutil import parser
 
 newdata = "../data/tabladedatos.csv"
@@ -26,21 +29,37 @@ for line in data[1:]:
 	point = (lat,lon)
 
 	year = date[2] 
+
 	if len(year) == 2:
-		year = "20" + year
+		year = "20" + str(year)
+
 	month = date[0]
 	day = date[1]
 
 	hour = time[0]
-	minute = time[1]
+	minutes = time[1]
 	seconds = time[2]
 
-	ID = year+month+day+hour+minute+seconds+lat+lon
-	if ID in check_set:
-		print("duplicate found: ", ID )
-		check_set[ID] += 1
-	else:
-		check_set[ID] = 1
+	datetime = (year, month, day, hour, minutes, seconds)
+
+	l = call_event(point, datetime)
+
+	clean_data.append(l)
+
+
+	if l in check_set:
+		raise Exception ("Duplicate found")
+
+clean_data.sort()
+for e in clean_data:
+	print(e)
+
+	# ID = year+month+day+hour+minute+seconds+lat+lon
+	# if ID in check_set:
+	# 	print("duplicate found: ", ID )
+	# 	check_set[ID] += 1
+	# else:
+	# 	check_set[ID] = 1
 
 # print (check_set.values())
 
