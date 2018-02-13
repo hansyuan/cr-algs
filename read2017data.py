@@ -13,7 +13,8 @@ def diff_datetime(earlier, later):
 	time1 = datetime.strptime(earlier.datetime_to_string(), date_format)
 	time2 = datetime.strptime(later.datetime_to_string(), date_format)
 	diff = time2 - time1 
-	print (diff)
+	# print (diff)
+	return diff
 
 
 def read2017():
@@ -24,7 +25,7 @@ def read2017():
 
 	newdata = "../data/tabladedatos.csv"
 
-	# "id","latitud","longitud","fecha","dia_semana","hora_llamada","vprioridad","no_unidad"
+# "id","latitud","longitud","fecha","dia_semana","hora_llamada","vprioridad","no_unidad"
 
 	with open(newdata, 'r') as csvfile:
 		data = [list(line) for line in csv.reader(csvfile)]
@@ -67,7 +68,9 @@ def read2017():
 	clean_data.sort()
 
 	for i in range(0, len(clean_data) - 1):
-		diff_datetime(clean_data[i], clean_data[i+1])
+		wait = diff_datetime(clean_data[i], clean_data[i+1])
+		# embed()
+		clean_data[i].waittime = wait.seconds
 
 	return clean_data
 

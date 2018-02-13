@@ -21,41 +21,49 @@ def prologue():
     """
 
     calls = read2017()
+    print(calls[5].waittime)
+    print(calls[22].waittime)
+    return calls
 
-def execute(speed):
+
+def change_states():
+    pass
+
+def clockloop(data, speed):
     """ 
     Run on a clock the simulation. When I run the simulator, the program
     itself should be understood to be running at a faster speed than real time. 
     """
-    amount = 5
 
     now = time()
-    
-    times = []
 
-    while True:
-        print("Sleep for %f" %(amount/speed))
+    for call_event in data:
+        sleep_time = call_event.waittime / speed
+        print("Sleep for %i simulator seconds or %i real seconds" 
+            %(call_event.waittime, sleep_time))
         
         old = time()
-        sleep(amount/speed)
+        sleep(sleep_time) # in units of seconds
         new = time()
         
-        print("%f seconds has passed" %(new-old))
-        times.append(new-old)
+        print("%5f real seconds has passed" %(new - old))
 
-    sum = 0
-    for x in times:
-        sum += x
 
-    sum /= len(times)
+    # sum = 0
+    # for x in times:
+    #     sum += x
 
-    print ("Average: %f" %sum)
-    print ("Goalwas: %f" %(amount/speed))
+    # sum /= len(times)
+
+    # print ("Average: %f" %sum)
+    # print ("Goalwas: %f" %(amount/speed))
 
 if __name__ == "__main__": 
     data = prologue()
-    speed = 2
-    # execute(data, speed)
+    speed = 500
+
+    print("Start the clock:")
+    clockloop(data, speed)
 
 
 
