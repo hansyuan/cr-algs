@@ -1,0 +1,295 @@
+Start the clock:
+The event is located at 32.506840, -116.963910
+Sleep for 660.00 simulator seconds or 0.09 real seconds
+0.094349 real seconds has passed 
+
+The event is located at 32.512630, -117.067820
+Sleep for 1500.00 simulator seconds or 0.21 real seconds
+0.218268 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 1620.00 simulator seconds or 0.23 real seconds
+0.235954 real seconds has passed 
+
+The event is located at 32.506840, -116.963910
+Sleep for 960.00 simulator seconds or 0.14 real seconds
+0.139382 real seconds has passed 
+
+The event is located at 32.512630, -117.067820
+Sleep for 5700.00 simulator seconds or 0.81 real seconds
+0.814657 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 1440.00 simulator seconds or 0.21 real seconds
+0.208632 real seconds has passed 
+
+The event is located at 32.506840, -116.963910
+Sleep for 8640.00 simulator seconds or 1.23 real seconds
+1.239459 real seconds has passed 
+
+The event is located at 32.506840, -116.963910
+Sleep for 3120.00 simulator seconds or 0.45 real seconds
+0.450883 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 420.00 simulator seconds or 0.06 real seconds
+0.061511 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 240.00 simulator seconds or 0.03 real seconds
+0.037161 real seconds has passed 
+
+The event is located at 32.512630, -117.067820
+Sleep for 6480.00 simulator seconds or 0.93 real seconds
+0.927267 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 540.00 simulator seconds or 0.08 real seconds
+0.082336 real seconds has passed 
+
+The event is located at 32.506840, -116.963910
+Sleep for 660.00 simulator seconds or 0.09 real seconds
+0.094388 real seconds has passed 
+
+The event is located at 32.466870, -116.916090
+Sleep for 180.00 simulator seconds or 0.03 real seconds
+0.026763 real seconds has passed 
+
+The event is located at 32.512630, -117.067820
+Sleep for 2220.00 simulator seconds or 0.32 real seconds
+0.317462 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 4080.00 simulator seconds or 0.58 real seconds
+0.582914 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 480.00 simulator seconds or 0.07 real seconds
+0.071628 real seconds has passed 
+
+The event is located at 32.466870, -116.916090
+Sleep for 2700.00 simulator seconds or 0.39 real seconds
+0.390698 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 2340.00 simulator seconds or 0.33 real seconds
+0.334794 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 5160.00 simulator seconds or 0.74 real seconds
+0.738489 real seconds has passed 
+
+The event is located at 32.466870, -116.916090
+Sleep for 1560.00 simulator seconds or 0.22 real seconds
+0.222933 real seconds has passed 
+
+The event is located at 32.512630, -117.067820
+Sleep for 3240.00 simulator seconds or 0.46 real seconds
+0.464095 real seconds has passed 
+
+The event is located at 32.506840, -116.963910
+Sleep for 1800.00 simulator seconds or 0.26 real seconds
+0.257992 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 3120.00 simulator seconds or 0.45 real seconds
+0.447936 real seconds has passed 
+
+The event is located at 32.506840, -116.963910
+Sleep for 1200.00 simulator seconds or 0.17 real seconds
+0.173946 real seconds has passed 
+
+The event is located at 32.506840, -116.963910
+Sleep for 660.00 simulator seconds or 0.09 real seconds
+0.097919 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 2940.00 simulator seconds or 0.42 real seconds
+0.420653 real seconds has passed 
+
+The event is located at 32.406450, -116.968980
+Sleep for 360.00 simulator seconds or 0.05 real seconds
+0.051808 real seconds has passed 
+
+The event is located at 32.512630, -117.067820
+Sleep for 600.00 simulator seconds or 0.09 real seconds
+0.088742 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 2160.00 simulator seconds or 0.31 real seconds
+0.311392 real seconds has passed 
+
+The event is located at 32.506840, -116.963910
+Sleep for 120.00 simulator seconds or 0.02 real seconds
+0.017796 real seconds has passed 
+
+The event is located at 32.506840, -116.963910
+Sleep for 1140.00 simulator seconds or 0.16 real seconds
+0.163055 real seconds has passed 
+
+The event is located at 32.524890, -117.028150
+Sleep for 3240.00 simulator seconds or 0.46 real seconds
+0.465566 real seconds has passed 
+
+The event is located at 32.406450, -116.968980
+Sleep for 1440.00 simulator seconds or 0.21 real seconds
+0.205803 real seconds has passed 
+
+The event is located at 32.406450, -116.968980
+Sleep for 1020.00 simulator seconds or 0.15 real seconds
+0.147974 real seconds has passed 
+
+The event is located at 32.438320, -116.925120
+Sleep for 1200.00 simulator seconds or 0.17 real seconds
+0.171672 real seconds has passed 
+
+The event is located at 32.506770, -116.964080
+Sleep for 3060.00 simulator seconds or 0.44 real seconds
+0.438801 real seconds has passed 
+
+The event is located at 32.541170, -117.000090
+Sleep for 1020.00 simulator seconds or 0.15 real seconds
+0.149603 real seconds has passed 
+
+The event is located at 32.394650, -116.955010
+Sleep for 4560.00 simulator seconds or 0.65 real seconds
+0.651596 real seconds has passed 
+
+The event is located at 32.539420, -117.051400
+Sleep for 60.00 simulator seconds or 0.01 real seconds
+0.009219 real seconds has passed 
+
+The event is located at 32.506820, -116.964160
+Sleep for 5460.00 simulator seconds or 0.78 real seconds
+0.784564 real seconds has passed 
+
+The event is located at 32.506780, -116.964110
+Sleep for 5220.00 simulator seconds or 0.75 real seconds
+0.746912 real seconds has passed 
+
+The event is located at 32.522390, -117.084790
+Sleep for 6420.00 simulator seconds or 0.92 real seconds
+0.920611 real seconds has passed 
+
+The event is located at 32.483040, -116.883570
+Sleep for 900.00 simulator seconds or 0.13 real seconds
+0.130081 real seconds has passed 
+
+The event is located at 32.426560, -116.968400
+Sleep for 2700.00 simulator seconds or 0.39 real seconds
+0.385863 real seconds has passed 
+
+The event is located at 32.507290, -116.970730
+Sleep for 1020.00 simulator seconds or 0.15 real seconds
+0.148233 real seconds has passed 
+
+The event is located at 32.520010, -116.851290
+Sleep for 2040.00 simulator seconds or 0.29 real seconds
+0.292975 real seconds has passed 
+
+The event is located at 32.403760, -116.943860
+Sleep for 60.00 simulator seconds or 0.01 real seconds
+0.009308 real seconds has passed 
+
+The event is located at 32.468720, -116.846190
+Sleep for 360.00 simulator seconds or 0.05 real seconds
+0.054779 real seconds has passed 
+
+The event is located at 32.504020, -116.897260
+Sleep for 2700.00 simulator seconds or 0.39 real seconds
+0.385880 real seconds has passed 
+
+The event is located at 32.488580, -116.844880
+Sleep for 5760.00 simulator seconds or 0.82 real seconds
+0.823628 real seconds has passed 
+
+The event is located at 32.506810, -116.964020
+Sleep for 180.00 simulator seconds or 0.03 real seconds
+0.030954 real seconds has passed 
+
+The event is located at 32.495400, -116.871290
+Sleep for 3240.00 simulator seconds or 0.46 real seconds
+0.465117 real seconds has passed 
+
+The event is located at 32.501620, -116.859040
+Sleep for 1260.00 simulator seconds or 0.18 real seconds
+0.185202 real seconds has passed 
+
+The event is located at 32.530960, -117.039590
+Sleep for 2220.00 simulator seconds or 0.32 real seconds
+0.318337 real seconds has passed 
+
+The event is located at 32.488620, -116.965610
+Sleep for 1020.00 simulator seconds or 0.15 real seconds
+0.148274 real seconds has passed 
+
+The event is located at 32.468720, -116.846190
+Sleep for 240.00 simulator seconds or 0.03 real seconds
+0.038101 real seconds has passed 
+
+The event is located at 32.480580, -117.020120
+Sleep for 60.00 simulator seconds or 0.01 real seconds
+0.010915 real seconds has passed 
+
+The event is located at 32.544330, -116.931010
+Sleep for 3000.00 simulator seconds or 0.43 real seconds
+0.431639 real seconds has passed 
+
+The event is located at 32.390120, -116.955870
+Sleep for 1380.00 simulator seconds or 0.20 real seconds
+0.197604 real seconds has passed 
+
+The event is located at 32.486700, -116.831210
+Sleep for 3060.00 simulator seconds or 0.44 real seconds
+0.440096 real seconds has passed 
+
+The event is located at 32.512820, -116.853340
+Sleep for 720.00 simulator seconds or 0.10 real seconds
+0.106243 real seconds has passed 
+
+The event is located at 32.529740, -117.012940
+Sleep for 180.00 simulator seconds or 0.03 real seconds
+0.026830 real seconds has passed 
+
+The event is located at 32.481060, -116.953150
+Sleep for 1860.00 simulator seconds or 0.27 real seconds
+0.266817 real seconds has passed 
+
+The event is located at 32.530540, -117.091810
+Sleep for 4860.00 simulator seconds or 0.69 real seconds
+0.697003 real seconds has passed 
+
+The event is located at 32.523930, -117.034670
+Sleep for 360.00 simulator seconds or 0.05 real seconds
+0.052671 real seconds has passed 
+
+The event is located at 32.522340, -116.851430
+Sleep for 840.00 simulator seconds or 0.12 real seconds
+0.121866 real seconds has passed 
+
+The event is located at 32.503570, -116.868240
+Sleep for 1740.00 simulator seconds or 0.25 real seconds
+0.251768 real seconds has passed 
+
+The event is located at 32.525520, -117.010100
+Sleep for 120.00 simulator seconds or 0.02 real seconds
+0.021614 real seconds has passed 
+
+The event is located at 32.505740, -116.953830
+Sleep for 600.00 simulator seconds or 0.09 real seconds
+0.087228 real seconds has passed 
+
+The event is located at 32.467130, -116.938160
+Sleep for 960.00 simulator seconds or 0.14 real seconds
+0.142369 real seconds has passed 
+
+The event is located at 32.523620, -116.890440
+Sleep for 0.00 simulator seconds or 0.00 real seconds
+0.000008 real seconds has passed 
+
+The event is located at 32.425010, -116.965900
+Sleep for 3120.00 simulator seconds or 0.45 real seconds
+0.450931 real seconds has passed 
+
+The event is located at 32.495520, -116.871630
+Sleep for 1080.00 simulator seconds or 0.15 real seconds

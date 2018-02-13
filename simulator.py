@@ -21,8 +21,6 @@ def prologue():
     """
 
     calls = read2017()
-    print(calls[5].waittime)
-    print(calls[22].waittime)
     return calls
 
 
@@ -35,32 +33,33 @@ def clockloop(data, speed):
     itself should be understood to be running at a faster speed than real time. 
     """
 
-    now = time()
+    now = time() 
+
+    # The original starting time of the clock is called now
+
+    # All events that occurred from the data will be an offset from the 
+    # original starting event. The first case's call time shall be the 
+    # starting time stored in now (approximately.)
 
     for call_event in data:
+        # Do the thing, then sleep.
+        change_states()
+        print("The event is located at %f, %f" %(call_event.lat, call_event.lon))
+
         sleep_time = call_event.waittime / speed
-        print("Sleep for %i simulator seconds or %i real seconds" 
+        print("Sleep for %.2f simulator seconds or %1.2f real seconds" 
             %(call_event.waittime, sleep_time))
         
         old = time()
         sleep(sleep_time) # in units of seconds
         new = time()
         
-        print("%5f real seconds has passed" %(new - old))
+        print("%5f real seconds has passed \n" %(new - old))
 
-
-    # sum = 0
-    # for x in times:
-    #     sum += x
-
-    # sum /= len(times)
-
-    # print ("Average: %f" %sum)
-    # print ("Goalwas: %f" %(amount/speed))
 
 if __name__ == "__main__": 
     data = prologue()
-    speed = 500
+    speed = 7000
 
     print("Start the clock:")
     clockloop(data, speed)
