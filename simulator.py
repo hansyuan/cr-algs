@@ -7,8 +7,9 @@ import random
 from enum import Enum
 from amb_enums import *
 from read2017data import read2017
+from amb_status import amb_status
 
-def prologue():
+def prologue(num_ambs):
     """ The previous problem with the clock was that I executed the clock 
     every single time a simulator second goes off. 
 
@@ -21,13 +22,22 @@ def prologue():
     """
 
     calls = read2017()
-    return calls
 
 
-def change_states():
+    ambulances = []
+
+    for num in range(num_ambs):
+        ambulances.append(amb_status())
+
+
+    return calls, ambulances
+
+def pick_ambulance():
+    return 0 
+def change_states(amb_status, amb_id):
     pass
 
-def clockloop(data, speed):
+def clockloop(data, ambs, speed):
     """ 
     Run on a clock the simulation. When I run the simulator, the program
     itself should be understood to be running at a faster speed than real time. 
@@ -42,8 +52,10 @@ def clockloop(data, speed):
     # starting time stored in now (approximately.)
 
     for call_event in data:
+
         # Do the thing, then sleep.
-        change_states()
+        amb_id = pick_ambulance()
+        change_states(amb_status, amb_id)
         print("The event is located at %f, %f" %(call_event.lat, call_event.lon))
 
         sleep_time = call_event.waittime / speed
@@ -58,11 +70,16 @@ def clockloop(data, speed):
 
 
 if __name__ == "__main__": 
-    data = prologue()
-    speed = 7000
+    number_of_ambulances = 11
+    speed1 = 5000
+    speed2 = 999999999
+
+    speed = speed2
+    
+    data, ambulances = prologue(number_of_ambulances)
 
     print("Start the clock:")
-    clockloop(data, speed)
+    clockloop(data, ambulances, speed)
 
 
 
