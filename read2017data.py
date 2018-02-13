@@ -5,7 +5,16 @@ from call_event import call_event
 import operator
 
 from dateutil import parser
+from datetime import datetime
 from IPython import embed
+
+def diff_datetime(earlier, later):
+	date_format = "%Y/%m/%d %H:%M:%S"
+	time1 = datetime.strptime(earlier.datetime_to_string(), date_format)
+	time2 = datetime.strptime(later.datetime_to_string(), date_format)
+	diff = time2 - time1 
+	print (diff)
+
 
 def read2017():
 	""" 
@@ -54,7 +63,13 @@ def read2017():
 
 		clean_data.append(new_call_event)
 
-	return clean_data.sort()
+	# Calculate the wait time for the next ambulance
+	clean_data.sort()
+
+	for i in range(0, len(clean_data) - 1):
+		diff_datetime(clean_data[i], clean_data[i+1])
+
+	return clean_data
 
 
 if __name__ == "__main__":

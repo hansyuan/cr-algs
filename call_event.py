@@ -26,6 +26,7 @@ class call_event:
 		self.hour = int(datetime[3])
 		self.minute = int(datetime[4])
 		self.second = int(datetime[5])
+		self.waittime = 0
 
 	def __str__(self):
 		display = ""
@@ -34,6 +35,10 @@ class call_event:
 			self.month, self.day, self.hour, self.minute, self.second)
 
 		return (display)
+
+	def datetime_to_string(self):
+		return "%04i/%02i/%02i %02i:%02i:%02i" %(self.year, 
+			self.month, self.day, self.hour, self.minute, self.second)
 
 	def __lt__(self, other):
 
