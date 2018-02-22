@@ -1,5 +1,9 @@
 # Cruz Roja Ambulance Algorithms WI 18
 
+To run, do `python3 sim.py` 
+
+or `./sim.py` (for `#!/usr/local/bin/python3`)
+
 ## Tips
 
 - Tip 1.  Start simple
