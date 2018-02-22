@@ -17,13 +17,14 @@ def diff_datetime(earlier, later):
 	return diff
 
 
-def read2017():
+def read2017(s):
 	""" 
 		This is a hardcoded function that reads the 2017 Cruz Roja data as 
 		call_event objects
 	"""
 
-	newdata = "../data/tabladedatos.csv"
+	
+	newdata = s
 
 # "id","latitud","longitud","fecha","dia_semana","hora_llamada","vprioridad","no_unidad"
 
