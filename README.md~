@@ -27,7 +27,7 @@ Sorry, I didn't name my classes using capital letters.
 
 - Use pydoc3
 
-- Use IPython.embed() and ipdb.set\_trace()
+- Use IPython.embed() and ipdb.set_trace()
 
 
 ## Goals

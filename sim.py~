@@ -11,7 +11,7 @@
 from time import time, sleep
 import sys
 import random
-from enum import Enum
+#from enum import Enum
 from amb_enums import *
 from read2017data import read2017
 from amb_status import amb_status
