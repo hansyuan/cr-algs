@@ -7,8 +7,8 @@ from enum import Enum
 from amb_enums import *
 from read2017data import read2017
 from amb_status import amb_status
-from IPython import embed
-from ipdb import set_trace
+# from IPython import embed
+# from ipdb import set_trace
 
 
 
@@ -148,7 +148,7 @@ def one_loop_per_second(calls_all_time, ambulances):
 
             for case in calls_received:
                 chosen_ambulance = pick_ambulance()
-                change_status()
+
             
             # Clean up: save next case number. Set next wait time. Reset temp time.
             case_number += len(calls_received)
