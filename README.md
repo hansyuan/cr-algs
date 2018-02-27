@@ -1,23 +1,21 @@
 # Cruz Roja Ambulance Algorithms WI 18
 
-TODO link the clock with the chooser and the gui
+The lab notebook I will use is in `sim.ipynb` not `simulator.ipnyb`.
 
-The lab notebook I will use is in sim.ipynb
+## Clean Signals and Levers to Pull
 
-- Now I get why we used the Python Notebook. Fortunately, I heard that the 
-new Jupyter lab is out so maybe I will try to install it. 
+- Ambulance chooser should cause a reaction in the GUI.
 
-- Using it now. I like it much better. 
+- The one-second-per-stack should have one pi chart and 
+ambulance bar table per event.
 
-- Also I'm finally sleeping a normal amount nowadays.
+## Random Updates
 
-To run, do `python3 sim.py` 
+- Sleeping better nowadays.
 
-or `./sim.sh` (for `#!/usr/local/bin/python3`)
+- Using Jupyter Lab -- it is amazing. 
 
-PyDocs: See ./\*.html files
-
-Sorry, I didn't name my classes using capital letters. 
+- Sorry, I didn't name my classes using capital letters.
 
 ## Tips
 
