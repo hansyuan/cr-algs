@@ -2,6 +2,8 @@
 
 TODO link the clock with the chooser and the gui
 
+The lab notebook I will use is in sim.ipynb
+
 - Now I get why we used the Python Notebook. Fortunately, I heard that the 
 new Jupyter lab is out so maybe I will try to install it. 
 
