@@ -7,7 +7,7 @@ def draw_pie(covered):
 
     labels = ['covered', 'not covered']
     sizes = [90, 10]
-    colors = ['pink', 'grey']
+    colors = ['lightblue', 'grey']
 
     
 

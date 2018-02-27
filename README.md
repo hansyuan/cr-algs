@@ -1,7 +1,11 @@
 # Cruz Roja Ambulance Algorithms WI 18
 
-Now I get why we used the Python Notebook. Fortunately, I heard that the 
+- Now I get why we used the Python Notebook. Fortunately, I heard that the 
 new Jupyter lab is out so maybe I will try to install it. 
+
+- Using it now. I like it much better. 
+
+- Also I'm finally sleeping a normal amount nowadays.
 
 To run, do `python3 sim.py` 
 
