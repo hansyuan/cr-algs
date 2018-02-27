@@ -11,7 +11,7 @@ To run, do `python3 sim.py`
 
 or `./sim.sh` (for `#!/usr/local/bin/python3`)
 
-PyDocs: See \*.html files
+PyDocs: See ./\*.html files
 
 Sorry, I didn't name my classes using capital letters. 
 
