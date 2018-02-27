@@ -4,14 +4,13 @@ import numpy as np
 import time
 
 def draw_pie(covered):
-
     labels = ['covered', 'not covered']
-    sizes = [90, 10]
+
     colors = ['lightblue', 'grey']
 
-    
-
-    plot.pie([covered, 100-covered], colors=colors, startangle=0, autopct='')
+    pie = plot.pie([covered, 100-covered], colors=colors, startangle=0, autopct='%.1f%%', shadow=True)
+    patches = pie[0]
+    plot.legend(patches, labels, loc='best')
     plot.show()
 
 

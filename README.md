@@ -1,5 +1,7 @@
 # Cruz Roja Ambulance Algorithms WI 18
 
+TODO link the clock with the chooser and the gui
+
 - Now I get why we used the Python Notebook. Fortunately, I heard that the 
 new Jupyter lab is out so maybe I will try to install it. 
 
