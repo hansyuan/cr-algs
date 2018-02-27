@@ -1,13 +1,5 @@
 #!/usr/local/bin/python3
 
-##############################################################################################
-#
-##############################################################################################
-
-##############################################################################################
-#
-##############################################################################################
-
 from time import time, sleep
 import sys
 import random
@@ -18,9 +10,13 @@ from amb_status import amb_status
 from IPython import embed
 from ipdb import set_trace
 
-##############################################################################################
-#
-##############################################################################################
+
+
+
+
+
+
+
 
 def prologue(num_ambs, data_set):
     """ The previous problem with the clock was that I executed the clock 
@@ -46,25 +42,29 @@ def prologue(num_ambs, data_set):
 
 
 
-##############################################################################################
-#
-##############################################################################################
+
+
+
+
+
+
 def pick_ambulance():
     return 0 
 
 
-##############################################################################################
-#
-##############################################################################################
-def change_states(amb_status, amb_id):
-    pass
 
 
-##############################################################################################
-#
-##############################################################################################
+
+
+
+
+
+
+
 def clockloop(data, ambs, speed):
     """ 
+    NOT USING. 
+    
     Run on a clock the simulation. When I run the simulator, the program
     itself should be understood to be running at a faster speed than real time. 
     """
@@ -97,15 +97,17 @@ def clockloop(data, ambs, speed):
     # Loop one time per simulator second
     
 
-##############################################################################################
-#
-##############################################################################################
+
+
+
+
 
 def one_loop_per_second(calls_all_time, ambulances):
 
     """ 
         calls_all_time: list of Call_events of (gps lat longs, date time)
             see call_event.py
+
         ambulances: list of amb_status of (deployed, location, time deployed)
             see amb_status.py
             
@@ -121,27 +123,39 @@ def one_loop_per_second(calls_all_time, ambulances):
         # then assign an ambulance for it for 20 minutes (20min * 60sec/min = 1200 sec)
 
         if next_occurring_call == temporary_second:
+
+            # Clear ambulances TODO
+            # Call ambulance.finish()
+
+            # Find all events occurring at this time. 
+
             calls_received = []   
             calls_received.append(calls_all_time[case_number])         
 
-            # If current waittime is 0, append the next event. If next event waittime is 0, 
-            # append 3rd event. And so on.
-
             print('case: ', case_number + 1, 'of', len(calls_all_time))
             check_data = case_number
-            while (0 == calls_all_time[check_data].waittime and 
-                case_number + 1 < len(calls_all_time)):
+            while (0 == calls_all_time[check_data].waittime 
+                    and case_number + 1 < len(calls_all_time)):
                 calls_received.append(calls_all_time[check_data + 1])
                 check_data += 1
+
 
             if False: 
                 for call in calls_received: print(call)
 
+            # Assign an ambulance TODO
+            # Call ambulance.deploy(time, lat, lon)
+
+            for case in calls_received:
+                chosen_ambulance = pick_ambulance()
+                change_status()
+            
+            # Clean up: save next case number. Set next wait time. Reset temp time.
             case_number += len(calls_received)
             next_occurring_call = calls_all_time[check_data].waittime
-
             temporary_second = 0
-
+            
+        # t <- t + 1 (sec)
         second += 1
         temporary_second += 1
 
@@ -184,5 +198,7 @@ def main():
     one_loop_per_second(data, ambulances)
 
 
-if __name__ == "__main__": 
-    main()
+
+
+
+if __name__ == "__main__": main()

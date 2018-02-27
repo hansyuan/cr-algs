@@ -1,0 +1,31 @@
+#!/usr/local/bin/python3
+import matplotlib.pyplot as plot 
+import time
+
+def draw(x):
+
+    labels = ['covered', 'not covered']
+    sizes = [90, 10]
+    colors = ['pink', 'grey']
+
+    
+
+    plot.pie([x, 100-x], colors=colors, startangle=0, autopct='')
+    plot.show()
+
+for x in range(0,100): 
+    draw(x)
+    time.sleep(0.1)
+
+
+exit()
+
+
+pie = plot.pie(sizes, colors=colors, shadow=True, startangle=0, autopct='%.1f%%')
+patches = pie[0]
+plot.legend(patches, labels, loc='best')
+plot.axis('equal')
+plot.tight_layout()
+plot.show()
+
+

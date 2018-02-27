@@ -1,5 +1,8 @@
 # Cruz Roja Ambulance Algorithms WI 18
 
+Now I get why we used the Python Notebook. Fortunately, I heard that the 
+new Jupyter lab is out so maybe I will try to install it. 
+
 To run, do `python3 sim.py` 
 
 or `./sim.sh` (for `#!/usr/local/bin/python3`)
@@ -25,7 +28,7 @@ Sorry, I didn't name my classes using capital letters.
 
 - Use sim.sh
 
-- Use pydoc3
+- Use pydoc3 -w class
 
 - Use IPython.embed() and ipdb.set\_trace()
 
