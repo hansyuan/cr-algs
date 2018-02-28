@@ -43,9 +43,6 @@ def pick_ambulance():
 
 
 
-    
-
-
 def one_loop_per_second(calls_all_time, ambulances):
 
     """ 
@@ -103,21 +100,8 @@ def one_loop_per_second(calls_all_time, ambulances):
         second += 1
         temporary_second += 1
 
-def main():
-    number_of_ambulances = 11
-    # speed1 = 5000
-    # speed2 = 999999999
-    # speed = speed2
-
-    smalldata = "../data/small_datos.csv"
-    newdata = "../data/tabladedatos.csv"
-
-    data, ambulances = prologue(number_of_ambulances, smalldata)
-
-    # clockloop(data, ambulances, speed)
-
-    # Calculate the number of 0 waittimes, and their events. 
-
+        
+def write_info():
     if False: 
         log = ""
         count = 0
@@ -135,7 +119,20 @@ def main():
         with  open('zero_wait.txt', 'w') as counter_file:
             counter_file.write(str(count) + '\n\n')
             counter_file.write(log)
+            
+            
+def main():
+    number_of_ambulances = 11
+    # speed1 = 5000
+    # speed2 = 999999999
+    # speed = speed2
 
+    smalldata = "../data/small_datos.csv"
+    newdata = "../data/tabladedatos.csv"
+
+    data, ambulances = prologue(number_of_ambulances, smalldata)
+    # clockloop(data, ambulances, speed)
+    # Calculate the number of 0 waittimes, and their events. 
     one_loop_per_second(data, ambulances)
 
 
