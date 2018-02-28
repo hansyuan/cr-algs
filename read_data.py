@@ -41,10 +41,10 @@ def strip_newline(s):
 
 
 def populate_data():
-    calls   = "input/calls.csv"
-    bases   = "input/bases.csv"
-    demands = "input/demand_points.csv"
-    times   = "input/times.csv"
+    calls   = "../input/calls.csv"
+    bases   = "../input/bases.csv"
+    demands = "../input/demand_points.csv"
+    times   = "../input/times.csv"
 
     # Raw Data
     bases_d = openfile_as_listoflist(filename=bases)

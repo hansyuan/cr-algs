@@ -121,7 +121,7 @@ def write_info():
             counter_file.write(log)
             
             
-def main():
+def run_through_cases():
     number_of_ambulances = 11
     # speed1 = 5000
     # speed2 = 999999999
@@ -139,4 +139,4 @@ def main():
 
 
 
-if __name__ == "__main__": main()
+if __name__ == "__main__": run_through_cases()
