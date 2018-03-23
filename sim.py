@@ -136,7 +136,4 @@ def run_through_cases():
     one_loop_per_second(data, ambulances)
 
 
-
-
-
 if __name__ == "__main__": run_through_cases()
